@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "loans",
+			"name": "billings",
 			"item": [
 				{
 					"name": "create",
@@ -25,7 +25,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3002/api/v1/acte/loan/create",
+							"raw": "localhost:3002/api/v1/acte/billing/create",
 							"host": [
 								"localhost"
 							],
@@ -34,7 +34,7 @@
 								"api",
 								"v1",
 								"acte",
-								"loan",
+								"billing",
 								"create"
 							]
 						}
@@ -55,7 +55,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3002/api/v1/acte/loan/create",
+									"raw": "localhost:3002/api/v1/acte/billing/create",
 									"host": [
 										"localhost"
 									],
@@ -64,7 +64,7 @@
 										"api",
 										"v1",
 										"acte",
-										"loan",
+										"billing",
 										"create"
 									]
 								}
@@ -101,7 +101,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3002/api/v1/acte/loan/:id/detail",
+							"raw": "localhost:3002/api/v1/acte/billing/:id/detail",
 							"host": [
 								"localhost"
 							],
@@ -110,14 +110,14 @@
 								"api",
 								"v1",
 								"acte",
-								"loan",
+								"billing",
 								":id",
 								"detail"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "4"
 								}
 							]
 						}
@@ -129,7 +129,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3002/api/v1/acte/loan/:id/detail",
+									"raw": "localhost:3002/api/v1/acte/billing/:id/detail",
 									"host": [
 										"localhost"
 									],
@@ -138,7 +138,7 @@
 										"api",
 										"v1",
 										"acte",
-										"loan",
+										"billing",
 										":id",
 										"detail"
 									],
@@ -182,7 +182,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3002/api/v1/acte/loan/delinquent/list?limit=10&page=1&sort=id desc",
+							"raw": "localhost:3002/api/v1/acte/billing/delinquent/list?limit=10&page=1&sort=id desc",
 							"host": [
 								"localhost"
 							],
@@ -191,7 +191,7 @@
 								"api",
 								"v1",
 								"acte",
-								"loan",
+								"billing",
 								"delinquent",
 								"list"
 							],
@@ -218,7 +218,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3002/api/v1/acte/loan/delinquent/list?limit=10&page=1&sort=id desc",
+									"raw": "localhost:3002/api/v1/acte/billing/delinquent/list?limit=10&page=1&sort=id desc",
 									"host": [
 										"localhost"
 									],
@@ -227,7 +227,7 @@
 										"api",
 										"v1",
 										"acte",
-										"loan",
+										"billing",
 										"delinquent",
 										"list"
 									],
@@ -288,7 +288,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3002/api/v1/acte/loan/:id/inquiry",
+							"raw": "localhost:3002/api/v1/acte/billing/:id/inquiry",
 							"host": [
 								"localhost"
 							],
@@ -297,14 +297,14 @@
 								"api",
 								"v1",
 								"acte",
-								"loan",
+								"billing",
 								":id",
 								"inquiry"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": ""
 								}
 							]
 						}
@@ -325,7 +325,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3002/api/v1/acte/loan/:id/inquiry",
+									"raw": "localhost:3002/api/v1/acte/billing/:id/inquiry",
 									"host": [
 										"localhost"
 									],
@@ -334,7 +334,7 @@
 										"api",
 										"v1",
 										"acte",
-										"loan",
+										"billing",
 										":id",
 										"inquiry"
 									],
@@ -379,7 +379,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"payment_date\": \"2024-09-26\",\n    \"amount\":770000\n}",
+							"raw": "{\n    \"payment_date\": \"2024-09-26\",\n    \"amount\":660000\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -387,7 +387,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3002/api/v1/acte/loan/:id/payment",
+							"raw": "localhost:3002/api/v1/acte/billing/:id/payment",
 							"host": [
 								"localhost"
 							],
@@ -396,14 +396,14 @@
 								"api",
 								"v1",
 								"acte",
-								"loan",
+								"billing",
 								":id",
 								"payment"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "4"
 								}
 							]
 						}
@@ -424,7 +424,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3002/api/v1/acte/loan/:id/payment",
+									"raw": "localhost:3002/api/v1/acte/billing/:id/payment",
 									"host": [
 										"localhost"
 									],
@@ -433,7 +433,7 @@
 										"api",
 										"v1",
 										"acte",
-										"loan",
+										"billing",
 										":id",
 										"payment"
 									],
@@ -484,7 +484,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3002/api/v1/acte/loan/:id/payment",
+									"raw": "localhost:3002/api/v1/acte/billing/:id/payment",
 									"host": [
 										"localhost"
 									],
@@ -493,7 +493,7 @@
 										"api",
 										"v1",
 										"acte",
-										"loan",
+										"billing",
 										":id",
 										"payment"
 									],

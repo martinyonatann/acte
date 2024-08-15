@@ -5,8 +5,8 @@ import (
 	"github.com/martinyonatann/acte/internal/billings/delivery/api"
 )
 
-func MapRoutes(echo *echo.Group, h *api.BillingHandler) {
-	billers := echo.Group("/loan")
+func MapBillingRoutes(echo *echo.Group, h *api.BillingHandler) {
+	billers := echo.Group("/billing")
 	billers.POST("/create", h.CreateLoan)
 	billers.GET("/:id/detail", h.DetailLoan)
 	billers.POST("/:id/inquiry", h.InquireRepaymentAmount)

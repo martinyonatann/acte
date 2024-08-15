@@ -24,7 +24,7 @@ func (s *Server) mapHandlers() error {
 		billerDelivery = api.NewBillingHandlers(billerUC)
 	)
 
-	delivery.MapRoutes(version, billerDelivery)
+	delivery.MapBillingRoutes(version, billerDelivery)
 
 	return nil
 }
