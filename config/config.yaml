@@ -1,0 +1,19 @@
+App:
+  Name: "acte"
+  Version: "0.0.1"
+  Scheme: "http"
+  Host: "localhost:3002"
+  Environment: local #local,development,staging,production
+  
+Server:
+  Port: "3002"
+  Debug: true
+  TimeZone: "Asia/Jakarta"
+
+Database:
+  Host: "127.0.0.1"
+  Port: "3306"
+  DBName: "acte"
+  UserName: "root"
+  Password: "pwd"
+  Debug: true
