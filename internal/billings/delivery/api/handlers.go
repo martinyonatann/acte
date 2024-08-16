@@ -23,11 +23,12 @@ func (h *BillingHandler) CreateLoan(c echo.Context) error {
 		return response.ErrorBuilder(app_error.BadRequest(err)).Send(c)
 	}
 
-	if err := h.uc.CreateLoan(c.Request().Context(), request); err != nil {
+	loanData, err := h.uc.CreateLoan(c.Request().Context(), request)
+	if err != nil {
 		return response.ErrorBuilder(err).Send(c)
 	}
 
-	return response.SuccessBuilder(nil).Send(c)
+	return response.SuccessBuilder(loanData).Send(c)
 }
 
 func (h *BillingHandler) DetailLoan(c echo.Context) error {

@@ -8,6 +8,7 @@ import (
 
 type Loan struct {
 	ID                  int64      `json:"id"`
+	BorrowerID          int64      `json:"borrower_id"`
 	Amount              float64    `json:"amount"`
 	Outstanding         float64    `json:"outstanding"`
 	InterestRate        float64    `json:"interest_rate"`
@@ -17,8 +18,13 @@ type Loan struct {
 }
 
 type CreateLoanRequest struct {
+	BorrowerID          int64   `json:"borrower_id"`
 	Amount              float64 `json:"amount"`
 	TermOfPaymentInWeek int     `json:"term_of_payment_in_week"`
+}
+
+type CreateLoanResponse struct {
+	ID int64 `json:"id"`
 }
 
 func (c CreateLoanRequest) Validate() error {
@@ -30,6 +36,7 @@ func (c CreateLoanRequest) Validate() error {
 
 type DetailLoan struct {
 	ID                  int64      `json:"id"`
+	BorrowerID          int64      `json:"borrower_id"`
 	Amount              float64    `json:"amount"`
 	Outstanding         float64    `json:"outstanding"`
 	InterestRate        float64    `json:"interest_rate"`

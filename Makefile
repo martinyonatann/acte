@@ -32,9 +32,16 @@ setup:
 	@docker-compose -f ./infrastructure/docker-compose.local.yml up -d
 	@sleep 8
 
+## down: Set down database temporary for local environtment
+.PHONY: down
+down: 
+	@echo "make down ${IS_IN_PROGRESS}"
+	@docker-compose -f ./infrastructure/docker-compose.local.yml down -t 1
+
+
 .PHONY: migrate-up
 migrate-up:
-	@goose -dir databases/migrations mysql "${DB_USER}:${DB_PASS}@tcp(${DB_HOST}:${DB_PORT})/${DB_NAME}" up
+	@goose -dir databases/migrations mysql "${DB_USER}:${DB_PASS}@tcp(${DB_HOST}:${DB_PORT})/${DB_NAME}" up  
 
 PHONY: migrate-down
 migrate-down:

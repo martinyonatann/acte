@@ -8,7 +8,7 @@ import (
 )
 
 type BillingUC interface {
-	CreateLoan(ctx context.Context, request dtos.CreateLoanRequest) error
+	CreateLoan(ctx context.Context, request dtos.CreateLoanRequest) (response dtos.CreateLoanResponse, err error)
 	DetailLoan(ctx context.Context, loanID int64) (loan dtos.DetailLoan, err error)
 	LoanRepayment(ctx context.Context, request dtos.LoanRepaymentRequest) error
 	InquireRepaymentAmount(ctx context.Context, request dtos.InquireRepaymentAmountRequest) (inquiryRepayment dtos.InquireRepaymentAmountResponse, err error)
