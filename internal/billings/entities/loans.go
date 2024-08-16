@@ -13,6 +13,7 @@ const (
 
 type Loan struct {
 	ID                  int64      `gorm:"column:id;primaryKey"`
+	BorrowerID          int64      `gorm:"column:borrower_id"`
 	Amount              float64    `gorm:"column:amount"`
 	Outstanding         float64    `gorm:"column:outstanding"`
 	InterestRate        float64    `gorm:"column:interest_rate"`
@@ -30,6 +31,7 @@ type DelinquentLoans []DelinquentLoan
 
 type UpdateLoan struct {
 	ID                  int64     `gorm:"column:id;primaryKey"`
+	BorrowerID          *int64    `gorm:"column:borrower_id"`
 	Amount              *float64  `gorm:"column:amount"`
 	Outstanding         *float64  `gorm:"column:outstanding"`
 	InterestRate        *float64  `gorm:"column:interest_rate"`
@@ -43,6 +45,7 @@ func (Loan) TableName() string {
 
 func NewLoan(request dtos.CreateLoanRequest) *Loan {
 	return &Loan{
+		BorrowerID:          request.BorrowerID,
 		Amount:              request.Amount,
 		InterestRate:        InterestRate,
 		TermOfPaymentInWeek: request.TermOfPaymentInWeek,
@@ -53,6 +56,7 @@ func NewLoan(request dtos.CreateLoanRequest) *Loan {
 
 type DetailLoan struct {
 	ID                  int64      `gorm:"column:id;primaryKey"`
+	BorrowerID          int64      `gorm:"column:borrower_id"`
 	Amount              float64    `gorm:"column:amount"`
 	Outstanding         float64    `gorm:"column:outstanding"`
 	InterestRate        float64    `gorm:"column:interest_rate"`
@@ -95,6 +99,7 @@ func MapDetailLoan(l DetailLoan) dtos.DetailLoan {
 
 	return dtos.DetailLoan{
 		ID:                  l.ID,
+		BorrowerID:          l.BorrowerID,
 		Amount:              l.Amount,
 		Outstanding:         l.Outstanding,
 		InterestRate:        l.InterestRate,
@@ -114,6 +119,7 @@ func MapDelinquentLoans(loans DelinquentLoans) dtos.DelinquentLoans {
 			UnpaidWeeks: loan.UnpaidWeeks,
 			Loan: dtos.Loan{
 				ID:                  loan.ID,
+				BorrowerID:          loan.BorrowerID,
 				Amount:              loan.Amount,
 				Outstanding:         loan.Outstanding,
 				InterestRate:        InterestRate,

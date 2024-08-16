@@ -21,15 +21,21 @@ func NewBillingUC(repo billings.BillingRepository) billings.BillingUC {
 	return &billingUC{repo: repo}
 }
 
-func (uc *billingUC) CreateLoan(ctx context.Context, request dtos.CreateLoanRequest) error {
-	return uc.repo.Atomic(ctx, &sql.TxOptions{}, func(tx billings.BillingRepository) error {
-		loanData := entities.NewLoan(request)
+func (uc *billingUC) CreateLoan(ctx context.Context, request dtos.CreateLoanRequest) (response dtos.CreateLoanResponse, err error) {
+	loanData := entities.NewLoan(request)
+	err = uc.repo.Atomic(ctx, &sql.TxOptions{}, func(tx billings.BillingRepository) error {
 		if err := tx.CreateLoan(ctx, loanData); err != nil {
 			return err
 		}
 
 		return tx.CreateLoanSchedules(ctx, entities.NewLoanSchedules(request, *loanData))
 	})
+
+	if err != nil {
+		return response, err
+	}
+
+	return dtos.CreateLoanResponse{ID: loanData.ID}, nil
 }
 
 func (uc *billingUC) DetailLoan(ctx context.Context, loanID int64) (loan dtos.DetailLoan, err error) {

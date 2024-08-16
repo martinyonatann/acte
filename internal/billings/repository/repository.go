@@ -117,7 +117,7 @@ func (r *billingRepo) GetRepaymentAmount(ctx context.Context, loanID int64, repa
 func (r *billingRepo) ListDelinquentLoan(ctx context.Context, params *pagination.PaginationRequest) (loans entities.DelinquentLoans, err error) {
 	query := r.db.WithContext(ctx).
 		Table("loans l").
-		Select("l.id, l.amount, l.outstanding, l.term_of_payment_in_week, l.created_at, l.updated_at, COUNT(*) AS unpaid_weeks").
+		Select("l.id,l.borrower_id, l.amount, l.outstanding, l.term_of_payment_in_week, l.created_at, l.updated_at, COUNT(*) AS unpaid_weeks").
 		Joins("JOIN loan_schedules ls ON ls.loan_id = l.id").
 		Where("ls.is_paid IS NOT TRUE AND ls.schedule_date <= DATE(?)", time.Now().Format(time.DateOnly)).
 		Group("l.id").
