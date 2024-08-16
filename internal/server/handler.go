@@ -2,10 +2,15 @@ package server
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/martinyonatann/acte/internal/billings/delivery"
-	"github.com/martinyonatann/acte/internal/billings/delivery/api"
-	"github.com/martinyonatann/acte/internal/billings/repository"
-	"github.com/martinyonatann/acte/internal/billings/usecase"
+
+	billingDelivery "github.com/martinyonatann/acte/internal/billings/delivery"
+	billingHandler "github.com/martinyonatann/acte/internal/billings/delivery/api"
+	billingRepository "github.com/martinyonatann/acte/internal/billings/repository"
+	billingUC "github.com/martinyonatann/acte/internal/billings/usecase"
+
+	reconciliationDelivery "github.com/martinyonatann/acte/internal/reconciliations/delivery"
+	reconciliationHandler "github.com/martinyonatann/acte/internal/reconciliations/delivery/api"
+	reconciliationUC "github.com/martinyonatann/acte/internal/reconciliations/usecase"
 )
 
 func (s *Server) mapHandlers() error {
@@ -19,12 +24,16 @@ func (s *Server) mapHandlers() error {
 	})
 
 	var (
-		billerRepo     = repository.NewBillingRepository(s.db)
-		billerUC       = usecase.NewBillingUC(billerRepo)
-		billerDelivery = api.NewBillingHandlers(billerUC)
+		billerRepo     = billingRepository.NewBillingRepository(s.db)
+		billerUC       = billingUC.NewBillingUC(billerRepo)
+		billerHandlers = billingHandler.NewBillingHandlers(billerUC)
+
+		reconciliationUC       = reconciliationUC.NewreconciliationUC()
+		reconciliationHandlers = reconciliationHandler.NewReconciliationHandlers(reconciliationUC)
 	)
 
-	delivery.MapBillingRoutes(version, billerDelivery)
+	billingDelivery.MapBillingRoutes(version, billerHandlers)
+	reconciliationDelivery.MapReconciliationRoutes(version, reconciliationHandlers)
 
 	return nil
 }

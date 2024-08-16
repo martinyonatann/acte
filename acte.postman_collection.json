@@ -532,6 +532,114 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Reconciliations",
+			"item": [
+				{
+					"name": "Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3002/api/v1/acte/reconciliation/check?transaction_path=tmp/system_transactions.csv&bank_statement_paths=tmp/bca/bank_statements.csv,tmp/cimb/bank_statements.csv&start_date=2024-08-01&end_date=2024-08-07",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"api",
+								"v1",
+								"acte",
+								"reconciliation",
+								"check"
+							],
+							"query": [
+								{
+									"key": "transaction_path",
+									"value": "tmp/system_transactions.csv"
+								},
+								{
+									"key": "bank_statement_paths",
+									"value": "tmp/bca/bank_statements.csv,tmp/cimb/bank_statements.csv"
+								},
+								{
+									"key": "start_date",
+									"value": "2024-08-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-08-07"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3002/api/v1/acte/reconciliation/check?transaction_path=tmp/system_transactions.csv&bank_statement_paths=tmp/bca/bank_statements.csv,tmp/cimb/bank_statements.csv&start_date=2024-08-01&end_date=2024-08-07",
+									"host": [
+										"localhost"
+									],
+									"port": "3002",
+									"path": [
+										"api",
+										"v1",
+										"acte",
+										"reconciliation",
+										"check"
+									],
+									"query": [
+										{
+											"key": "transaction_path",
+											"value": "tmp/system_transactions.csv"
+										},
+										{
+											"key": "bank_statement_paths",
+											"value": "tmp/bca/bank_statements.csv,tmp/cimb/bank_statements.csv"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-08-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-07"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 16 Aug 2024 16:58:23 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "745"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"total_processed\": 4,\n        \"total_matched\": 6,\n        \"total_unmatched\": 3,\n        \"unmatched_statements\": [\n            {\n                \"bca\": [\n                    {\n                        \"unique_identifier\": \"bca005\",\n                        \"amount\": -200000,\n                        \"date\": \"2024-08-05\"\n                    }\n                ]\n            },\n            {\n                \"cimb\": [\n                    {\n                        \"unique_identifier\": \"cimb005\",\n                        \"amount\": -200000,\n                        \"date\": \"2024-08-05\"\n                    }\n                ]\n            }\n        ],\n        \"unmatched_transactions\": [\n            {\n                \"trxID\": \"trx001\",\n                \"amount\": 500000,\n                \"type\": \"DEBIT\",\n                \"transactionTime\": \"2024-08-01T17:00:00+07:00\"\n            }\n        ],\n        \"total_discrepancies\": 500000\n    }\n}"
+						}
+					]
+				}
+			]
 		}
 	]
 }
