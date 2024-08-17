@@ -37,7 +37,7 @@
 
 ```json
 {
-  "proof_path": "https://bucket/proof_path.png",  // base64
+  "proof_path": "https://bucket/proof_path.png", 
   "employee_id": "string",
   "approval_date": "YYYY-MM-DD"
 }
@@ -77,7 +77,7 @@
 
 ```json
 {
-  "agreement_letter": "base64", 
+  "borrower_agreement_letter_path": "https://bucket/agreement_letter.pdf", 
   "employee_id": 1
 }
 
